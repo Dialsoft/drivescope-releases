@@ -3,6 +3,19 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.19.0 — 2026-11-11
+- **New: installer.** `DriveScope-Setup.exe` installs DriveScope just for you (no administrator password needed to
+  install) in `%LocalAppData%\Programs\DriveScope`, with Start menu and Desktop shortcuts and an uninstaller in
+  Settings › Apps. It closes a running DriveScope before installing. The portable `DriveScope.exe` is still available
+  and works exactly as before.
+- Installed copies keep their settings and history in `%AppData%\DriveScope` and save test reports to
+  `Documents\DriveScope Reports` (portable copies keep everything next to the exe). Uninstalling never deletes
+  reports and asks before removing settings.
+- **New: 📖 Manual** button in the header: opens the user manual (dialsoft.com/drivescope/manual), with a printable
+  PDF and an explainer video on the DriveScope page.
+- **Fixed:** on some window sizes the page was wider than the window and needed scrolling sideways (long drive names
+  and drop-downs pushed the right-hand column wider).
+
 ## 1.18.1 — 2026-11-11
 - First version published on GitHub: updates now come from github.com/Dialsoft/drivescope-releases.
 - The updater also accepts the checksum written directly in latest.json (as Dialsoft's other programs publish it).

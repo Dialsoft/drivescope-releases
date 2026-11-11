@@ -1,8 +1,13 @@
 {
-  "version": "1.18.1",
+  "version": "1.19.0",
   "published": "2026-11-11",
-  "notes": "• DriveScope is now on GitHub: this is where updates come from. DriveScope checks a few seconds after it starts and every 6 hours, shows what's new, and installs with one click – or automatically when it's idle, if you switch that on. Every update is verified against its SHA-256 checksum and never installs during a test or erase.\n• 📣 Share button: tell someone about DriveScope by email (mail app, Gmail, Outlook), Facebook Messenger, WhatsApp, Microsoft Teams, text message (Phone Link), a Facebook / LinkedIn / X post, or a QR code.\n• Memory type (SLC / MLC / TLC / QLC) with P/E-cycle ranges, on screen and on the label.\n• TRIM status in the header, “TRIM this drive now”, and “Skip TRIM during the format” for drives that disconnect in USB docks.",
+  "notes": "• New installer: DriveScope-Setup.exe installs DriveScope just for you, with Start menu and Desktop shortcuts and an uninstaller. The portable DriveScope.exe is still available.\n• 📖 Manual button in the header: a full user manual, a printable PDF and a 2½-minute explainer video.\n• Fixed: on some window sizes the page needed scrolling sideways.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe.sha256",
-  "size": 8657920
+  "sha256": "36b0e3c44f5ad94fd345e741658a8f2263159158861b97ed56cef451c8f18f23",
+  "size": 8659968,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.0",
+  "setup_sha256": "bc4d9717314a890878f00e50d663d629ebcd7393b2db857a9a629842041cb4e0",
+  "setup_size": 2969240,
+  "page": "https://github.com/Dialsoft/drivescope-releases#readme",
+  "manual": "https://dialsoft.com/drivescope/manual/"
 }
