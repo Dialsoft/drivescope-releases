@@ -65,7 +65,7 @@ Click a drive to select it. DriveScope never selects disk 0 or the boot drive on
 - **The boot drive is locked.** The drive Windows runs from (and any drive holding Windows) can be tested and read, but DriveScope never writes to it, erases it or changes its partitions. Its erase and partition buttons don't appear.
 - **Nothing defaults to disk 0.** Every action names its drive explicitly.
 - **The right drive, verified.** Before anything that writes, DriveScope re-reads the drive's serial number, size and partition-table ID from the hardware and compares them with what the screen showed. If you swapped drives or something changed, it refuses and tells you. Each action shows a **🎯 Target** line naming the exact drive.
-- **Confirmation codes.** Erasing and partition changes need the **last 4 letters/digits of the serial number** typed in (letters and digits only; spaces and capitals don't matter). Drives without a usable serial number ask you to type **ERASE**.
+- **Confirmation codes.** Erasing and partition changes need the **last 4 letters/digits of the serial number** typed in (letters and digits only; spaces and capitals don't matter). The full serial number is shown right above the typing box with its last 4 characters highlighted, and both stay on screen without scrolling. The button only lights up once the code matches; `Enter` confirms, `Esc` cancels. Drives without a usable serial number ask you to type **ERASE**.
 - **Tests that only read** (Quick test, surface scan, benchmarks' read part, self-tests) never change data. Tests that write say so in red and always ask first.
 
 ## 4. Connection, docks & USB
