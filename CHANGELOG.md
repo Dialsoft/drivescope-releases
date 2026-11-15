@@ -3,6 +3,17 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.19.1 — 2026-11-15
+- **Confirmation boxes always show what you need.** The Secure erase, Full capacity verify, Data refresh, Remove hidden
+  area, Remove password and Unlock boot drive confirmations are now proper DriveScope dialogs instead of Windows' small
+  prompt box, which made you scroll to reach the typing box. The drive's details stay at the top, and the **serial
+  number (with the last 4 characters highlighted)**, the box you type into and the buttons stay fixed at the bottom,
+  so nothing has to be scrolled, even on a small screen. Only the explanation in the middle scrolls, if the window is
+  very small.
+- The **partition dialogs** (Prepare for sale, Format, Delete, Remove all, Create) work the same way: the full serial
+  number is shown right above the typing box, with its last 4 characters highlighted.
+- In these dialogs the OK button only lights up once the right code is typed; Enter presses it, Esc cancels.
+
 ## 1.19.0 — 2026-11-11
 - **New: installer.** `DriveScope-Setup.exe` installs DriveScope just for you (no administrator password needed to
   install) in `%LocalAppData%\Programs\DriveScope`, with Start menu and Desktop shortcuts and an uninstaller in
