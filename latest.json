@@ -1,13 +1,13 @@
 {
-  "version": "1.19.1",
+  "version": "1.19.2",
   "published": "2026-11-15",
-  "notes": "• Confirmation boxes now always show the drive's serial number (last 4 characters highlighted) and the typing box without scrolling: Secure erase, Full capacity verify, Data refresh, hidden area, password, boot-drive unlock and all partition dialogs.\n• OK only lights up once the right code is typed; Enter confirms, Esc cancels.",
+  "notes": "• New live surface map for the Quick test and Full surface scan: 200 squares that fill in as the drive is read (green = fine, amber = slow, red = unreadable), with a speed graph. It stays with the result.\n• Fixed: the scan's progress bar stayed empty while the test ran.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "6ba1ce788789659df9883e728475bd791020b59cf61c1b9064dbfa3c7d88c5b4",
-  "size": 8667136,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.1",
-  "setup_sha256": "224da0ea873feaab9aec10dfbe857eeab08ff59142bc68fc62f9d664034009d7",
-  "setup_size": 2972372,
+  "sha256": "b1503fec64f806a9127f31a4d1bccd1761b368856422d54d2ce06eb5e057d685",
+  "size": 8678912,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.2",
+  "setup_sha256": "506a44f141ee9fedde053c7386d4ddcd6917d6315def7c8771c607a9603a35fb",
+  "setup_size": 2975798,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }

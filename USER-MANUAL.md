@@ -110,6 +110,12 @@ The **Drive details** panel lists everything DriveScope knows. Point at any line
 | **Full surface scan** | Reads every sector to find unreadable areas. Read-only. | An hour or more on big drives |
 | **Short / Extended self-test** | The drive tests itself internally (the most thorough check for hard drives). | 2 minutes / up to hours |
 
+![Full surface scan with the live surface map](https://dialsoft.com/drivescope/img/scanmap.jpg)
+
+A Full surface scan in progress: the surface map fills in as the drive is read.
+
+**Surface map:** while the Quick test or Full surface scan reads the drive, the drive is drawn as 200 squares (each 0.5 % of the drive, from its start at the top left to its end at the bottom right). Each square turns **green** when it reads fine, **amber** when it is much slower than the rest of the drive, or **red** when it has unreadable data; the area being read now has a pulsing blue outline. The blue graph above shows the read speed across the drive. Point at any square for its exact position and speed. The finished map stays with the result.
+
 The result is **✔ Tested good**, **⚠ warnings**, **✖ Failed** or **FAKE**, with the reasons listed and the measured numbers below. **Cancel** stops any test. If a drive stops answering during a test, DriveScope notices, fails the test and says so instead of hanging.
 
 ## 7. Fake-capacity check

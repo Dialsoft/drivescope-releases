@@ -3,6 +3,14 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.19.2 — 2026-11-15
+- **New: live surface map** for the Quick test and the Full surface scan. The drive is shown as 200 squares (each
+  0.5 % of the drive, start at top left, end at bottom right) that fill in as the scan reads them: green = read fine,
+  amber = much slower than the rest of the drive, red = unreadable. A speed graph above it shows the read speed across
+  the drive. Point at any square for its position, speed and result. The finished map stays with the test result.
+- **Fixed:** the progress bar of the Quick test / Full surface scan stayed empty while the test ran (a style meant
+  for another box hid its fill).
+
 ## 1.19.1 — 2026-11-15
 - **Confirmation boxes always show what you need.** The Secure erase, Full capacity verify, Data refresh, Remove hidden
   area, Remove password and Unlock boot drive confirmations are now proper DriveScope dialogs instead of Windows' small
