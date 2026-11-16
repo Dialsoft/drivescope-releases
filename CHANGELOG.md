@@ -3,6 +3,16 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.19.3 — 2026-11-16
+- **NVMe self-tests: no more false “unsupported”.** Since Windows 10 version 2004 (and on Windows 11), Windows' own
+  NVMe driver allows only one self-test about every 10 minutes and refuses another one sooner with “status 8”
+  (throttled). DriveScope used to show that as unsupported and wrongly blamed the Windows version. Now it waits, shows
+  a countdown (“starts automatically at 4:52 PM”) and starts the test by itself. Cancel works while it waits.
+- **Does this drive have a self-test?** The self-test box now says so, read from the drive's own data (NVMe: the
+  identify data's self-test flag; SATA: the SMART self-test capability bit), together with the drive's own estimate
+  of how long the extended test takes. Drives that say they have no self-test get a clear message instead of an error.
+- Other Windows refusal codes are now explained in plain English (drive busy, invalid request, not supported…).
+
 ## 1.19.2 — 2026-11-15
 - **New: live surface map** for the Quick test and the Full surface scan. The drive is shown as 200 squares (each
   0.5 % of the drive, start at top left, end at bottom right) that fill in as the scan reads them: green = read fine,

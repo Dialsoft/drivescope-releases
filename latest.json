@@ -1,13 +1,13 @@
 {
-  "version": "1.19.2",
-  "published": "2026-11-15",
-  "notes": "• New live surface map for the Quick test and Full surface scan: 200 squares that fill in as the drive is read (green = fine, amber = slow, red = unreadable), with a speed graph. It stays with the result.\n• Fixed: the scan's progress bar stayed empty while the test ran.",
+  "version": "1.19.3",
+  "published": "2026-11-16",
+  "notes": "• NVMe self-tests: Windows allows only one about every 10 minutes (it answered \"status 8\"). DriveScope now waits, shows when the test will start and starts it automatically, instead of saying unsupported.\n• The self-test box now says whether the drive itself reports a built-in self-test, and how long the drive expects the extended test to take.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "b1503fec64f806a9127f31a4d1bccd1761b368856422d54d2ce06eb5e057d685",
-  "size": 8678912,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.2",
-  "setup_sha256": "506a44f141ee9fedde053c7386d4ddcd6917d6315def7c8771c607a9603a35fb",
-  "setup_size": 2975798,
+  "sha256": "6859161fba2c102132dd2f1a4261e353ed6c0b59488134b0a325883bb04511f5",
+  "size": 8692224,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.3",
+  "setup_sha256": "ef79ccf00fe0940dd35c0f89ae9c7eb21abaa663c5ef0da3d694dd7027d8dd9e",
+  "setup_size": 2980450,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }

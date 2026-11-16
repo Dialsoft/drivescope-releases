@@ -108,7 +108,7 @@ The **Drive details** panel lists everything DriveScope knows. Point at any line
 | **Quick test** | Reads health, measures read speed and reads 1,024 spots spread across the whole drive. Read-only. | About a minute |
 | **Quick test + print label** | The same, then prints the label on the Brother QL as soon as it finishes – even if you've moved on to another drive. Nothing prints if the test is cancelled. | About a minute |
 | **Full surface scan** | Reads every sector to find unreadable areas. Read-only. | An hour or more on big drives |
-| **Short / Extended self-test** | The drive tests itself internally (the most thorough check for hard drives). | 2 minutes / up to hours |
+| **Short / Extended self-test** | The drive tests itself internally (the most thorough check for hard drives). The box says whether the drive reports a built-in self-test, read from the drive's own data, and the drive's own estimate of how long the extended test takes. Drives without one (most USB flash drives, some budget SSDs) can't run it; use the Full surface scan instead. | 2 minutes / up to hours |
 
 ![Full surface scan with the live surface map](https://dialsoft.com/drivescope/img/scanmap.jpg)
 
@@ -247,6 +247,7 @@ Uninstalling never deletes test reports, and asks before removing settings and h
 | “Invalid Parameter” during the format | DriveScope retries and falls back to Windows' FORMAT command by itself. If it still fails: unplug and reconnect the drive, press Refresh and try again, or try NTFS or another dock. |
 | No S.M.A.R.T. data (“SMART ✖”) | The USB dock doesn't pass health data through. Use another dock (Realtek RTL9210, JMicron, ASMedia ASM2362/ASM1153 usually work) or a motherboard slot. |
 | Running slower than it should | Check the **Connected via** line and the USB card: USB 2 speed, a hub, or a dock limits the speed. |
+| NVMe self-test says “Waiting for Windows” | Normal. Since Windows 10 version 2004 (Windows 11 too), Windows' own NVMe driver allows only one self-test about every 10 minutes. It refuses another one sooner with “status 8”. DriveScope waits, shows when the test will start and starts it by itself; leave it running or press Cancel. |
 | SATA Secure Erase says “frozen” | The PC's firmware froze the drive at startup. Connect it after Windows has started (dock or hot-swap bay), or briefly put the PC to sleep and wake it. |
 | The confirmation code won't match | Type only the last 4 letters/digits of the serial number shown in the dialog. Make sure you're on the newest version (an old copy may still be running in the tray: right-click its icon → Quit). |
 | A drive shows “Not responding” | Unplug and reconnect it, then press Refresh. If it keeps happening, the drive or dock is failing. |
