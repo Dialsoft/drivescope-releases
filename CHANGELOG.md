@@ -3,6 +3,18 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.19.4 — 2026-11-16
+- **New: self-test log.** While a drive self-test runs, the self-test box shows a time-stamped log: when it was
+  requested, any wait for Windows, when the drive started it and how long the drive expects it to take, every 10 % of
+  progress with the drive's temperature, a warning if the drive runs hot (70 °C+), the result, and the highest
+  temperature. The log is saved with the result, included in the **test report** ("Drive self-test log") and in the
+  **diagnostic file**.
+- **Failure details:** when a self-test fails, DriveScope now shows what the drive recorded: which **step** failed
+  (NVMe drives, e.g. "Media check – a read of the flash memory itself"), **where** (the failing block as GB from the
+  start, % into the drive and which partition it's in) and the drive's power-on hours at the time. These also go into
+  the report.
+- Time left is now written as "45 min" / "1 h 05 min".
+
 ## 1.19.3 — 2026-11-16
 - **NVMe self-tests: no more false “unsupported”.** Since Windows 10 version 2004 (and on Windows 11), Windows' own
   NVMe driver allows only one self-test about every 10 minutes and refuses another one sooner with “status 8”

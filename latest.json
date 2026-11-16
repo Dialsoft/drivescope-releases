@@ -1,13 +1,13 @@
 {
-  "version": "1.19.3",
+  "version": "1.19.4",
   "published": "2026-11-16",
-  "notes": "• NVMe self-tests: Windows allows only one about every 10 minutes (it answered \"status 8\"). DriveScope now waits, shows when the test will start and starts it automatically, instead of saying unsupported.\n• The self-test box now says whether the drive itself reports a built-in self-test, and how long the drive expects the extended test to take.",
+  "notes": "• New self-test log: time-stamped progress with the drive's temperature, any wait for Windows, and the result. It's saved with the result, the test report and the diagnostic file.\n• When a self-test fails, DriveScope shows which step failed and where on the drive (GB from the start and which partition).",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "6859161fba2c102132dd2f1a4261e353ed6c0b59488134b0a325883bb04511f5",
-  "size": 8692224,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.3",
-  "setup_sha256": "ef79ccf00fe0940dd35c0f89ae9c7eb21abaa663c5ef0da3d694dd7027d8dd9e",
-  "setup_size": 2980450,
+  "sha256": "cb0cea6d041033457d560eb5a4f83f61c6ffe5740a69ef376228f232d6e27e41",
+  "size": 8714752,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.4",
+  "setup_sha256": "7a421774aa867e430b25855f5a01bd99ada898ccdd788c2a0b134bd36d23c094",
+  "setup_size": 2985791,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }
