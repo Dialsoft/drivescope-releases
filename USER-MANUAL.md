@@ -96,6 +96,36 @@ The **Drive details** panel lists everything DriveScope knows. Point at any line
 - **Health, life remaining, power-on hours, temperature, data written**, and **S.M.A.R.T. values** with raw numbers on hover, so you can compare with CrystalDiskInfo.
 - **Drive history** – the drive's own error log and self-test history.
 - **Since intake** – DriveScope remembers each drive's health the first time it saw it, and warns if things got worse during your tests.
+- **Seagate FARM log** (Seagate hard drives) – see below.
+- **Temperature & health history** – graphs of the drive's temperature and failure counters over time – see below.
+
+### Seagate FARM check: used drives sold as new
+
+![Seagate FARM log showing History altered](https://dialsoft.com/drivescope/img/farm.jpg)
+
+A “new” Seagate drive: S.M.A.R.T. says 14 hours, FARM says 31,842 hours (3.6 years).
+
+Seagate hard drives keep a second, separate set of lifetime counters called **FARM** (Field Access Reliability Metrics). The ordinary S.M.A.R.T. counters (power-on hours, power cycles) can be reset with special tools, which is how used drives, often from data centers, get sold as “new”. The tools that do that don't reset FARM.
+
+On Seagate drives, DriveScope reads FARM and compares it with S.M.A.R.T.:
+
+- **✔ Verified** – FARM agrees with S.M.A.R.T. The hours are genuine.
+- **✖ History altered** – FARM shows far more hours or power cycles than S.M.A.R.T. (or a different serial number). The drive's history was wiped. The verdict becomes a warning, and the label, resale checklist and report use the real FARM hours. Sell it as used and list the real hours.
+
+FARM also shows the **date of assembly**, head flight hours, lifetime data written and read, and the **highest temperature the drive ever reached**. FARM is read through a direct SATA connection or a dock that passes health data through. Other brands don't have FARM, so the line doesn't appear for them.
+
+### Temperature & health history
+
+![Temperature and health history graphs](https://dialsoft.com/drivescope/img/trend.jpg)
+
+A week of readings: daily temperature swings, peaks during tests, and pending sectors creeping up.
+
+While DriveScope runs (also when it's just sitting in the system tray), it reads every connected drive's temperature and health counters **every 15 minutes**, and again whenever you rescan. The graphs show the **last 24 hours**, **7 days** or **All**:
+
+- **Temperature**, with the lowest, average and highest. A dashed line marks 55 °C. Hard drives last longest below about 45 °C; one that is often above 55 °C needs more airflow.
+- **Health counters**: reallocated, pending and uncorrectable sectors, NVMe media errors and connection (CRC) errors. Flat lines are what you want. If a counter rose during the period, the legend shows it in red, e.g. “Pending sectors: 4 (+4 in this period)”: the drive is getting worse.
+
+Gaps in a line mean DriveScope wasn't running or the drive wasn't connected. The history is matched by serial number, so it continues when you reconnect the drive later. DriveScope doesn't take readings while a drive is being erased or partitioned.
 
 **Media and Data Integrity Errors** (NVMe) count reads the drive couldn't correct. 0 is normal. A small number that never changes during your tests is a one-time event; a number that rises means the flash is failing. It can't be reset. **Error Information Log Entries** is a different line and usually harmless.
 
@@ -107,7 +137,7 @@ The **Drive details** panel lists everything DriveScope knows. Point at any line
 | --- | --- | --- |
 | **Quick test** | Reads health, measures read speed and reads 1,024 spots spread across the whole drive. Read-only. | About a minute |
 | **Quick test + print label** | The same, then prints the label on the Brother QL as soon as it finishes – even if you've moved on to another drive. Nothing prints if the test is cancelled. | About a minute |
-| **Full surface scan** | Reads every sector to find unreadable areas. Read-only. | An hour or more on big drives |
+| **Full surface scan** | Reads every sector to find unreadable and weak areas. Read-only. Options: **Passes** and a **range** (see below). | An hour or more on big drives |
 | **Short / Extended self-test** | The drive tests itself internally (the most thorough check for hard drives). The box says whether the drive reports a built-in self-test, read from the drive's own data, and the drive's own estimate of how long the extended test takes. Drives without one (most USB flash drives, some budget SSDs) can't run it; use the Full surface scan instead. The drive only reports how far along it is (NVMe in 1% steps, SATA in 10% steps), so DriveScope keeps a **self-test log**: start, any wait for Windows, each 10% with the drive's temperature, and the result. If it fails, DriveScope shows the failed step (NVMe) and where on the drive the problem is (GB from the start and which partition). The log goes into the test report and the diagnostic file. | 2 minutes / up to hours |
 
 ![Full surface scan with the live surface map](https://dialsoft.com/drivescope/img/scanmap.jpg)
@@ -115,6 +145,32 @@ The **Drive details** panel lists everything DriveScope knows. Point at any line
 A Full surface scan in progress: the surface map fills in as the drive is read.
 
 **Surface map:** while the Quick test or Full surface scan reads the drive, the drive is drawn as 200 squares (each 0.5 % of the drive, from its start at the top left to its end at the bottom right). Each square turns **green** when it reads fine, **amber** when it is much slower than the rest of the drive, or **red** when it has unreadable data; the area being read now has a pulsing blue outline. The blue graph above shows the read speed across the drive. Point at any square for its exact position and speed. The finished map stays with the result.
+
+### Full surface scan options: passes, range, resume
+
+![Full surface scan options](https://dialsoft.com/drivescope/img/scanopts.jpg)
+
+- **Passes** (1, 2, 3 or 5): reads the drive that many times. One pass is enough for most drives. Two or three catch **weak** sectors that read fine once but are slow or fail when read again. Spots that are slow on **every** pass are reported as a weak area, the clearest sign of a failing surface. Each pass takes as long as the first.
+- **From / To %**: scans just part of the drive. Use it to re-check the area where an earlier scan found slow or unreadable spots (point at a square of the surface map to see its percentage) without waiting hours for the whole drive. **Whole drive** sets it back to 0–100 % and 1 pass. A partial scan says so in its result. For a resale check, scan the whole drive.
+- **Resume**: if you cancel a Full surface scan, a **Resume from 42%** button appears. It continues from where the scan stopped, so you don't re-read the part that was already checked.
+
+### Response times: weak spots that don't show as errors
+
+![Surface map with response-time analysis](https://dialsoft.com/drivescope/img/scanlat.jpg)
+
+Every sector read, but two spots took 700 ms each, on both passes: a weak area.
+
+A drive can read every sector without an error and still be failing. A weak spot on a hard drive often reads only after the drive retries it for half a second or more. The average speed hides that, but the slowest reads show it. So the Quick test and the Full surface scan **time every read** and compare it with the drive's own normal read time. That way a fast NVMe SSD, a hard drive and a slow USB stick each get fair limits:
+
+| Class | Meaning |
+| --- | --- |
+| **Normal** | Up to 2× the drive's normal read time. |
+| **A bit slow** | 2–5×. Usually the drive or Windows was busy for a moment. Harmless. |
+| **Slow** | Over 5× and over 50 ms. Worth watching if there are many. |
+| **Very slow** | Over 20× and over half a second. The drive had to retry: a weak spot that may soon become unreadable. |
+| **Failed** | The read failed: unreadable data. |
+
+Below the bar: the normal read time, how fast 95 % and 99 % of reads were, the slowest read and where it was, and a list of the slowest spots. Areas with a very slow read are also marked amber on the surface map. The verdict becomes a **warning** when there are three or more very slow reads, one over 3 seconds, or a spot that was slow on every pass. A single very slow read is only a note, because Windows or antivirus software can cause one. Run a second pass over that area: if it's slow again at the same place, it's a weak spot.
 
 The result is **✔ Tested good**, **⚠ warnings**, **✖ Failed** or **FAKE**, with the reasons listed and the measured numbers below. **Cancel** stops any test. If a drive stops answering during a test, DriveScope notices, fails the test and says so instead of hanging.
 
@@ -133,12 +189,22 @@ A fake drive shows **FAKE DRIVE – real size ≈ 34 GB**; its label says so too
 
 ## 8. Speed tests
 
-![Benchmark results](https://dialsoft.com/drivescope/img/bench.jpg)
+![Benchmark options and results with the Mix 70/30 column](https://dialsoft.com/drivescope/img/bench.jpg)
 
-- **Benchmark (CrystalDiskMark-style):** the four standard tests (sequential and random 4K, read and write) using a temporary test file in free space – your data isn't touched. Results are compared with the drive's rated speed and with what the connection allows (a USB dock or slow port is pointed out).
+Benchmark options, and the results with the Mix 70/30 column (demo mode, so the speeds are simulated).
+
+- **Benchmark (CrystalDiskMark-style):** the four standard tests (sequential and random 4K, read and write) using a temporary test file in free space – your data isn't touched. Results are compared with the drive's rated speed and with what the connection allows (a USB dock or slow port is pointed out). Options, as in CrystalDiskMark:
+  - **Profile**: *Default* (SEQ1M Q8T1, SEQ1M Q1T1, RND4K Q32T1, RND4K Q1T1: comparable with published results and used for the speed score); *NVMe SSD* (heavier loads, up to 64 requests at once, that only fast NVMe drives can take advantage of); *Real world* (one request at a time, like opening programs or copying a file: much lower numbers than the box says, which is normal, so it isn't scored).
+  - **Runs** (1, 3 or 5): each test runs that many times and the best counts. More runs smooth out a moment when Windows was busy.
+  - **Test data**: *Random* (recommended) can't be compressed, so it gives the honest speed. *All zeros*: some SSD controllers compress data and write zeros far faster. Run the benchmark once with each. If zeros are much faster, the drive compresses, and its everyday speed is the random-data result.
+  - **Mix 70/30**: adds a column of 70 % reads and 30 % writes at the same time, which is closer to how a system drive is really used. Many drives slow down noticeably when reading and writing at once.
 - **Sustained write test:** writes one long stream and graphs the speed. Most SSDs are fast only until their write cache fills; the cache size and the speed after it show the drive's real class (QLC drops much lower than TLC).
 - **Surface read graph:** reads across the whole drive and graphs speed by position, to find slow or weak areas. Read-only.
 - **Performance history:** every result for a drive (matched by serial number), newest first – handy for before/after an erase, or comparing docks.
+
+![Benchmark options and results with the Mix column](https://dialsoft.com/drivescope/img/bench.jpg)
+
+Benchmark options, and the results with the Mix 70/30 column.
 
 Progress is animated live: speed, position and a running chart.
 
@@ -192,7 +258,7 @@ If Windows refuses the format (“Invalid Parameter”), DriveScope waits and re
 
 | Method | For | What it does |
 | --- | --- | --- |
-| **Overwrite + verify** | All drives | Writes over every sector, then checks 4,096 random spots (or every sector). NIST “Clear”. |
+| **Overwrite + verify** | All drives | Writes over every sector, then checks 4,096 random spots (or every sector). NIST “Clear”. Choose the pattern: **zeros** (1 pass, the NIST recommendation), **random data** (1 pass, leaves no recognizable pattern) or **random, then zeros** (2 passes, for policies that ask for more than one pass; takes twice as long). The verification checks the final pattern. |
 | **Cryptographic erase** | NVMe | The drive destroys its internal encryption key – seconds. NIST “Purge”. |
 | **Sanitize** | NVMe | The drive wipes all flash including spare areas, and confirms. NIST “Purge”. The closest thing to a “low-level format”. |
 | **SATA Secure Erase** | SATA SSDs & HDDs | The drive's own erase command; also clears spare areas and restores SSD speed. Works when the drive isn't “frozen” – connect it after Windows has started (dock or hot-swap bay). |
@@ -233,7 +299,7 @@ The **Resale check** lists everything a buyer cares about (health, test result, 
 
 |  | Installed | Portable |
 | --- | --- | --- |
-| Settings, label settings, drive history | `%AppData%\DriveScope` | Next to DriveScope.exe |
+| Settings, label settings, drive history (including the temperature & health history, `drivescope-trends.json`) | `%AppData%\DriveScope` | Next to DriveScope.exe |
 | Test reports & erase certificates | `Documents\DriveScope Reports` | `Test reports` next to DriveScope.exe |
 | Program | `%LocalAppData%\Programs\DriveScope` | Wherever you put it |
 
@@ -250,6 +316,8 @@ Uninstalling never deletes test reports, and asks before removing settings and h
 | NVMe self-test says “Waiting for Windows” | Normal. Since Windows 10 version 2004 (Windows 11 too), Windows' own NVMe driver allows only one self-test about every 10 minutes. It refuses another one sooner with “status 8”. DriveScope waits, shows when the test will start and starts it by itself; leave it running or press Cancel. |
 | SATA Secure Erase says “frozen” | The PC's firmware froze the drive at startup. Connect it after Windows has started (dock or hot-swap bay), or briefly put the PC to sleep and wake it. |
 | The confirmation code won't match | Type only the last 4 letters/digits of the serial number shown in the dialog. Make sure you're on the newest version (an old copy may still be running in the tray: right-click its icon → Quit). |
+| Seagate drive says “History altered” | Its S.M.A.R.T. hours were reset, and the FARM log shows the real use (see [Seagate FARM check](#farm)). The drive may still work fine, but it isn't new. Sell it as used with the real hours, or return it to the seller. |
+| Scan passed but warns about very slow reads | The drive read everything but had to retry some spots (see [Response times](#latency)). Re-scan just that area with **From/To** and 2 passes. If it's slow again at the same place, it's a weak area: don't sell the drive as good. |
 | A drive shows “Not responding” | Unplug and reconnect it, then press Refresh. If it keeps happening, the drive or dock is failing. |
 | The page says DriveScope isn't running | Start DriveScope again from the Start menu, Desktop or DriveScope.exe. |
 | Antivirus warning | New, unsigned programs are sometimes flagged. Download only from dialsoft.com or Dialsoft's GitHub page, and report it to your antivirus vendor as a false positive. |
@@ -268,6 +336,9 @@ Uninstalling never deletes test reports, and asks before removing settings and h
 | DRAM-less / HMB | Budget SSDs without their own memory cache; they're slower under heavy use, especially in USB enclosures. |
 | NIST Clear / Purge | Erase levels from the US standard NIST SP 800-88: Clear protects against normal recovery tools; Purge also against lab recovery. |
 | HPA | Host Protected Area: capacity hidden from the computer, sometimes used by laptop makers for recovery tools. |
+| FARM | Field Access Reliability Metrics: a second set of lifetime counters inside Seagate hard drives that S.M.A.R.T. reset tools don't touch. |
+| Response time, P95 / P99 | How long a single read takes. “95 % within 3.4 ms” (P95) means 95 out of every 100 reads were at least that fast. The slowest 1 % shows weak spots that averages hide. |
+| Q8T1, Q32T16… | Benchmark load: Q = requests waiting in the queue, T = threads. Q1T1 is one request at a time (everyday use); high Q×T is the heavy load that rated speeds are measured with. |
 | UAS / BOT | USB storage modes: UAS is the modern, faster one; BOT (Bulk-Only) is the classic mode used by flash drives. |
 
 DriveScope is published by Dialsoft LLC, Wharton NJ. Developed with Claude by Anthropic. Brand and model names belong to their owners. Screenshots show DriveScope's demo mode with simulated drives.

@@ -4,7 +4,7 @@ Drive tester for Windows by Dialsoft LLC (theITguy.com). Tests SSDs, hard drives
 
 ## Download
 
-Current version: **1.19.4** · Windows 10 or 11, 64-bit. Both downloads are the same program; pick one:
+Current version: **1.20.0** · Windows 10 or 11, 64-bit. Both downloads are the same program; pick one:
 
 | | |
 |---|---|
@@ -28,11 +28,14 @@ DriveScope checks this page a few seconds after it starts and every 6 hours, and
 
 ## What's new
 
-See [CHANGELOG.md](CHANGELOG.md) for every version. Latest (1.19.0):
+See [CHANGELOG.md](CHANGELOG.md) for every version. Latest (1.20.0):
 
-- New installer (`DriveScope-Setup.exe`) alongside the portable `DriveScope.exe`.
-- 📖 Manual button in the header; a full user manual, printable PDF and explainer video.
-- Fixed: on some window sizes the page needed scrolling sideways.
+- **Seagate FARM check:** catches used Seagate drives whose S.M.A.R.T. hours were reset to sell them as new.
+- **Response-time analysis:** every read of a scan is timed; weak spots the drive has to retry are flagged even when nothing fails.
+- **Full surface scan options:** passes, scan a range, resume a cancelled scan.
+- **Temperature & health history** graphs (24 hours / 7 days / all).
+- **Benchmark options** like CrystalDiskMark: profiles, runs, random or zero data, 70/30 mix.
+- **Erase patterns:** zeros, random, or random then zeros.
 
 ---
 © Dialsoft LLC. Built with Claude. QR codes by QR Code Generator for JavaScript © Kazuhiko Arase (MIT license).
