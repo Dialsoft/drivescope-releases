@@ -1,13 +1,13 @@
 {
-  "version": "1.19.4",
-  "published": "2026-11-16",
-  "notes": "• New self-test log: time-stamped progress with the drive's temperature, any wait for Windows, and the result. It's saved with the result, the test report and the diagnostic file.\n• When a self-test fails, DriveScope shows which step failed and where on the drive (GB from the start and which partition).",
+  "version": "1.20.0",
+  "published": "2026-11-17",
+  "notes": "Seagate FARM check (used drives sold as new), response-time analysis of surface scans, scan passes/range/resume, temperature & health history graphs, benchmark profiles/runs/test data/70-30 mix, erase patterns.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "cb0cea6d041033457d560eb5a4f83f61c6ffe5740a69ef376228f232d6e27e41",
-  "size": 8714752,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.19.4",
-  "setup_sha256": "7a421774aa867e430b25855f5a01bd99ada898ccdd788c2a0b134bd36d23c094",
-  "setup_size": 2985791,
+  "sha256": "56587f13f8ab980625b98d7c7d698d07aa2535d90e7cb79fc67866d8ddcddac0",
+  "size": 8796160,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.0",
+  "setup_sha256": "86339b85f3c79f3571d6705791244222e77d39f7a8461e66f6776f7522a04091",
+  "setup_size": 3010699,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }

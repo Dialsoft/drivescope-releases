@@ -3,6 +3,31 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.0 — 2026-11-17
+- **New: Seagate FARM check – catches used drives sold as new.** Seagate hard drives keep a second set of lifetime
+  counters (the FARM log) that the usual S.M.A.R.T. reset tools don't touch. DriveScope reads it on Seagate drives
+  and compares: when FARM shows thousands of hours but S.M.A.R.T. shows a handful, the drive details show
+  **"History altered"**, the verdict becomes a warning, the label and resale checklist use the real hours, and the
+  report says "Hours verified (Seagate FARM): NO". Also shown: date of assembly, head flight hours, lifetime data
+  written/read and the highest temperature the drive ever reached.
+- **New: response-time analysis** for the Quick test and the Full surface scan. Every read is timed and judged against
+  the drive's own normal read time (fair for SSDs, hard drives and USB sticks alike): a bar of normal / a bit slow /
+  slow / very slow / failed reads, the median, 95th and 99th percentile and slowest read, and a list of the slowest
+  spots with where they are. Very slow reads mean the drive had to retry – weak spots that may soon become
+  unreadable – and now give a warning even when every sector read. Those areas are also marked on the surface map.
+- **Full surface scan options:** **Passes** (1, 2, 3 or 5 – spots slow on every pass are reported as weak areas) and a
+  **range** (From/To % of the drive) to re-check just a suspect area. A cancelled Full scan can be **resumed** where it
+  stopped.
+- **New: temperature & health history.** DriveScope records every drive's temperature and failure counters every 15
+  minutes while it runs (also from the system tray) and on every rescan, and graphs them for the last 24 hours,
+  7 days or everything – with lowest / average / highest temperature and any counter that rose in the period.
+- **Benchmark options (like CrystalDiskMark):** **Profile** (Default, NVMe SSD, Real world), **Runs** (1, 3 or 5 –
+  the best counts), **Test data** (random or all zeros – shows whether an SSD compresses data) and a **Mix 70/30**
+  read/write column.
+- **Overwrite erase: choice of pattern** – zeros (1 pass), random data (1 pass), or random then zeros (2 passes). The
+  verification checks the final pattern.
+- The test report includes the response times, scan options and benchmark profile.
+
 ## 1.19.4 — 2026-11-16
 - **New: self-test log.** While a drive self-test runs, the self-test box shows a time-stamped log: when it was
   requested, any wait for Windows, when the drive started it and how long the drive expects it to take, every 10 % of
