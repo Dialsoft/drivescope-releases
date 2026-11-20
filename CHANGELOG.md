@@ -3,6 +3,14 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.1 — 2026-11-20
+- **New: ⏻ Power button** in the header – shut down or restart the PC from the DriveScope page, for drives in an
+  internal M.2 or SATA slot that can only be changed with the PC off. Windows gives a 15-second countdown with a
+  **Cancel** button on the page. If a test is still running you can choose **"Wait until the running test is
+  finished"**: DriveScope shuts down by itself when it's done (after a 60-second countdown you can cancel). It is a
+  full shutdown (not Fast Startup), and it never switches off while a drive is being erased or partitioned.
+- Safer: DriveScope's local web page now refuses requests from other web sites open in the same browser.
+
 ## 1.20.0 — 2026-11-17
 - **New: Seagate FARM check – catches used drives sold as new.** Seagate hard drives keep a second set of lifetime
   counters (the FARM log) that the usual S.M.A.R.T. reset tools don't touch. DriveScope reads it on Seagate drives

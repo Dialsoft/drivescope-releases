@@ -1,13 +1,13 @@
 {
-  "version": "1.20.0",
-  "published": "2026-11-17",
-  "notes": "Seagate FARM check (used drives sold as new), response-time analysis of surface scans, scan passes/range/resume, temperature & health history graphs, benchmark profiles/runs/test data/70-30 mix, erase patterns.",
+  "version": "1.20.1",
+  "published": "2026-11-20",
+  "notes": "New Power button: shut down or restart the PC from the DriveScope page (for internal M.2/SATA drives), optionally when the running test finishes. The page now refuses requests from other web sites.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "56587f13f8ab980625b98d7c7d698d07aa2535d90e7cb79fc67866d8ddcddac0",
-  "size": 8796160,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.0",
-  "setup_sha256": "86339b85f3c79f3571d6705791244222e77d39f7a8461e66f6776f7522a04091",
-  "setup_size": 3010699,
+  "sha256": "e9de33d741d2b18040f66d46807c1591424e1c1098079c71e9677898ae86ed7f",
+  "size": 8815616,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.1",
+  "setup_sha256": "573f533cd5aea0a2decae61c9fec69ca8f2db0c05e93e2b73a89e1ecf4144e11",
+  "setup_size": 3016733,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }
