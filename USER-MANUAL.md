@@ -45,6 +45,7 @@ The drive list on the left; the selected drive's connection, details and tests o
 | **📣 Share** | Tell someone about DriveScope (see [Sharing](#15-updates--sharing)). |
 | **Up to date / Update to x.y.z** | Update status. Click to check for a new version now. |
 | **Refresh drives** | Scans all drives again and clears the results shown. DriveScope also refreshes by itself when a drive or dock is plugged in or removed. |
+| **⏻ Power** | Shuts down or restarts the PC, for changing a drive in an internal slot (see [Shutting down to change a drive](#power)). |
 | **Quit** | Stops DriveScope completely (it asks first if something is running). |
 
 ### The drive list
@@ -222,6 +223,18 @@ TRIM tells an SSD which space is free, so it can clean up ahead of time and stay
 ## 10. Several drives at once
 
 Every drive can run its own test, benchmark, burn-in, erase or partition change at the same time as the others. Each has its own progress, Cancel button and hang detection. Busy drives show their task in the drive list; the floating badge lists every running job (click one to jump to it), and Windows notifies you as each finishes. A second job on the same drive is refused.
+
+### Shutting down to change a drive
+
+A drive in an internal M.2 or SATA slot can only be changed with the PC switched off. When you've finished with it, click **⏻ Power** in the header:
+
+- **⏻ Shut down** switches the PC off completely, so you can swap the drive. Windows first shows a **15-second countdown**: a red bar at the top of the page with a **Cancel** button.
+- **⟳ Restart** restarts the PC (off and straight back on). It isn't enough to swap a drive.
+- If a test is still running, tick **Wait until the running test is finished**. A blue bar shows it's waiting. When the test is done, DriveScope starts a **60-second countdown** and then shuts down by itself. The result is saved in the drive history and the report folder first. You can cancel at any time.
+
+It's a full shutdown, not Windows' “Fast Startup” (which is really a partial hibernate), as Microsoft recommends before changing hardware. DriveScope **never** switches off while a drive is being erased, partitioned or refreshed: half-written changes could leave the drive unusable. Save your work in other programs first, because Windows closes them.
+
+**The routine for internal drives:** test the drive (Quick test + print label) → ⏻ Power → Shut down → swap the drive → switch on → start DriveScope.
 
 ## 11. Partitions & what's installed
 
