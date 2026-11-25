@@ -4,7 +4,7 @@ Drive tester for Windows by Dialsoft LLC (theITguy.com). Tests SSDs, hard drives
 
 ## Download
 
-Current version: **1.20.1** · Windows 10 or 11, 64-bit. Both downloads are the same program; pick one:
+Current version: **1.20.2** · Windows 10 or 11, 64-bit. Both downloads are the same program; pick one:
 
 | | |
 |---|---|
@@ -28,8 +28,9 @@ DriveScope checks this page a few seconds after it starts and every 6 hours, and
 
 ## What's new
 
-See [CHANGELOG.md](CHANGELOG.md) for every version. Latest (1.20.1):
+See [CHANGELOG.md](CHANGELOG.md) for every version. Latest (1.20.2):
 
+- **⏏ Safely remove** for USB drives (mSATA/M.2 adapters, docks, sticks), and mSATA drives recognized automatically.
 - **⏻ Power button:** shut down or restart the PC from the DriveScope page – for drives in an internal M.2/SATA slot – now, or when the running test finishes.
 - **Seagate FARM check:** catches used Seagate drives whose S.M.A.R.T. hours were reset to sell them as new.
 - **Response-time analysis:** every read of a scan is timed; weak spots the drive has to retry are flagged even when nothing fails.

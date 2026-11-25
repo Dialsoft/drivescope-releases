@@ -45,6 +45,7 @@ The drive list on the left; the selected drive's connection, details and tests o
 | **📣 Share** | Tell someone about DriveScope (see [Sharing](#15-updates--sharing)). |
 | **Up to date / Update to x.y.z** | Update status. Click to check for a new version now. |
 | **Refresh drives** | Scans all drives again and clears the results shown. DriveScope also refreshes by itself when a drive or dock is plugged in or removed. |
+| **⏏ Remove** (drive list) | Safely removes a USB drive before you unplug it (see [Safely removing a USB drive](#eject)). |
 | **⏻ Power** | Shuts down or restarts the PC, for changing a drive in an internal slot (see [Shutting down to change a drive](#power)). |
 | **Quit** | Stops DriveScope completely (it asks first if something is running). |
 
@@ -235,6 +236,23 @@ A drive in an internal M.2 or SATA slot can only be changed with the PC switched
 It's a full shutdown, not Windows' “Fast Startup” (which is really a partial hibernate), as Microsoft recommends before changing hardware. DriveScope **never** switches off while a drive is being erased, partitioned or refreshed: half-written changes could leave the drive unusable. Save your work in other programs first, because Windows closes them.
 
 **The routine for internal drives:** test the drive (Quick test + print label) → ⏻ Power → Shut down → swap the drive → switch on → start DriveScope.
+
+### Safely removing a USB drive (mSATA / M.2 adapters, docks, sticks)
+
+Every drive on USB has a **⏏ Remove** button in the drive list, and a **⏏ Safely remove** button in its Connection panel. It's the same as “Safely Remove Hardware” in the Windows system tray. Windows writes out anything it still has waiting for the drive, then switches the adapter off. When DriveScope says **“It's safe to unplug … now”**, unplug the cable or take the drive out of the adapter. Plug in the next drive and it shows up by itself.
+
+- Pulling a drive without it can corrupt what's on it, which matters for a drive you just prepared for sale. Some cheap USB-SATA adapters also get confused until they're unplugged cleanly.
+- If Windows refuses, a program still has a file or folder open on the drive (an Explorer window, a document, an antivirus or backup scan). Close it and click Remove again. Nothing is lost: the drive simply stays connected.
+- The button isn't there for the Windows drive or for drives inside the PC (use [⏻ Power → Shut down](#power) for those), and it's grayed out while DriveScope is testing that drive.
+
+**Tips for mSATA in a USB adapter:**
+
+- **The adapter's chip decides how much DriveScope can see.** Adapters with an ASMedia (ASM1051/1153/235CM) or JMicron (JMS578/JMS580) chip pass S.M.A.R.T. health data through. Many no-name ones don't. The drive's Connection panel shows what yours passes (✔ / ✖). If health shows ✖, the adapter is hiding it, not the drive.
+- **Speed:** a USB 2.0 adapter tops out around 35–40 MB/s, so any SSD looks slow. The benchmark points out when the adapter or port is the limit.
+- **Secure erase and TRIM** are often blocked by USB adapters. *Overwrite + verify* erase always works.
+- **Heat:** a bare mSATA board in an open adapter can get hot during a Full scan. The temperature graph shows it.
+- **Nothing shows up?** Some cards that look like mSATA are really **mini-PCIe** (PCIe SSDs, Wi-Fi or modem cards). Same size, same connector, but an mSATA adapter can't see them at all.
+- The form factor shows **mSATA** automatically: from the drive itself, or from its model number for older drives that don't report it. If it's wrong, correct it with one click on the Form factor line.
 
 ## 11. Partitions & what's installed
 
