@@ -3,6 +3,13 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.4 — 2026-11-25
+- **New: "Does TRIM work on this drive?"** The TRIM line in the drive details now checks all three links:
+  the **drive** supports TRIM (or the adapter hides it), the **connection / USB adapter** passes it on (Windows'
+  own answer, plus UAS or BOT mode) and **Windows** TRIM is switched on – with a plain verdict (✔ TRIM works /
+  ✖ No TRIM / ⚠ Partly / – Not needed) and what to do. The Connection panel's row is now "TRIM reaches the
+  drive" (it used to only say whether DriveScope could read the drive's TRIM support), and the report includes it.
+
 ## 1.20.3 — 2026-11-25
 - Fixed: **Prepare for sale** (and creating or formatting a partition) made Explorer pop up errors – "You need to
   format the disk…" or "…is not accessible" – especially on drives in USB adapters. The new partition now gets
