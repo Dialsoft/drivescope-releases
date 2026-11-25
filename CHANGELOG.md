@@ -3,6 +3,13 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.3 — 2026-11-25
+- Fixed: **Prepare for sale** (and creating or formatting a partition) made Explorer pop up errors – "You need to
+  format the disk…" or "…is not accessible" – especially on drives in USB adapters. The new partition now gets
+  its drive letter only after it's formatted, and Windows' new-drive pop-ups are paused while DriveScope changes
+  the partitions (and switched back on afterwards).
+- Fixed: the **⏏ Safely remove** button could still say "Removing…" after you picked another drive.
+
 ## 1.20.2 — 2026-11-25
 - **New: ⏏ Safely remove** for drives on USB – adapters (mSATA, M.2, 2.5" SATA), docks, USB sticks and card readers.
   A **⏏ Remove** button on each USB drive in the drive list, and **⏏ Safely remove** in its Connection panel. It's

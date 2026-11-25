@@ -1,13 +1,13 @@
 {
-  "version": "1.20.2",
+  "version": "1.20.3",
   "published": "2026-11-25",
-  "notes": "Safely remove (⏏) for USB drives – mSATA/M.2 adapters, docks, sticks – and mSATA drives recognized from their model number.",
+  "notes": "Fixed Explorer error pop-ups during Prepare for sale on USB-adapter drives, and the Safely remove button showing Removing… on the next drive.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "0ba8f301aafd6db462593d40390464c9cb9cb0f28d0a77dafa857f6a12900778",
-  "size": 8829952,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.2",
-  "setup_sha256": "aae0d8e4ae9e736b68fb75c2fb7b4f0f7a1ed91bb58b52d7866ed09a921f24be",
-  "setup_size": 3020910,
+  "sha256": "79f8211021d5abbe3fe611d9c2da08d3d8278105332e2932159237e26c4ee4cf",
+  "size": 8832000,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.3",
+  "setup_sha256": "dacf9a6deb0c8b30ede6378a6ed2f5b10d6a35e081648bd6002e512ed1326e24",
+  "setup_size": 3022378,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }
