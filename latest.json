@@ -1,13 +1,13 @@
 {
-  "version": "1.20.1",
-  "published": "2026-11-20",
-  "notes": "New Power button: shut down or restart the PC from the DriveScope page (for internal M.2/SATA drives), optionally when the running test finishes. The page now refuses requests from other web sites.",
+  "version": "1.20.2",
+  "published": "2026-11-25",
+  "notes": "Safely remove (⏏) for USB drives – mSATA/M.2 adapters, docks, sticks – and mSATA drives recognized from their model number.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "e9de33d741d2b18040f66d46807c1591424e1c1098079c71e9677898ae86ed7f",
-  "size": 8815616,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.1",
-  "setup_sha256": "573f533cd5aea0a2decae61c9fec69ca8f2db0c05e93e2b73a89e1ecf4144e11",
-  "setup_size": 3016733,
+  "sha256": "0ba8f301aafd6db462593d40390464c9cb9cb0f28d0a77dafa857f6a12900778",
+  "size": 8829952,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.2",
+  "setup_sha256": "aae0d8e4ae9e736b68fb75c2fb7b4f0f7a1ed91bb58b52d7866ed09a921f24be",
+  "setup_size": 3020910,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }

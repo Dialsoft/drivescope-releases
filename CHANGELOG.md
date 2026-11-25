@@ -3,6 +3,17 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.2 — 2026-11-25
+- **New: ⏏ Safely remove** for drives on USB – adapters (mSATA, M.2, 2.5" SATA), docks, USB sticks and card readers.
+  A **⏏ Remove** button on each USB drive in the drive list, and **⏏ Safely remove** in its Connection panel. It's
+  the same as "Safely Remove Hardware" in the Windows tray: Windows writes out anything still waiting for the
+  drive, then switches the adapter off, and DriveScope says "It's safe to unplug … now". If a program still has
+  a file open on the drive, Windows refuses and DriveScope tells you why – nothing is lost. Never offered for the
+  Windows drive or internal drives (use ⏻ Power → Shut down for those), or while DriveScope is testing the drive.
+- mSATA drives are now recognized from their model number when they don't report their form factor (Samsung
+  MZ-M…, Crucial …SSD3, Kingston SMS200, Transcend MSA…, Intel SSDMCE/SSDMAE, Lite-On LMT-…), so the details,
+  label and report say "mSATA".
+
 ## 1.20.1 — 2026-11-20
 - **New: ⏻ Power button** in the header – shut down or restart the PC from the DriveScope page, for drives in an
   internal M.2 or SATA slot that can only be changed with the PC off. Windows gives a 15-second countdown with a
