@@ -221,6 +221,18 @@ Progress is animated live: speed, position and a running chart.
 
 TRIM tells an SSD which space is free, so it can clean up ahead of time and stay fast. Windows does this automatically when files are deleted and re-checks all free space weekly (“Optimize Drives”). The TRIM box shows whether Windows TRIM is on, whether the drive supports TRIM, and which volumes will be trimmed. **TRIM this drive now** runs Windows' weekly step immediately – it changes no files and causes no wear, so it's also allowed on the Windows drive.
 
+### Does TRIM work on this drive?
+
+TRIM only works when three things all work, and the **TRIM** line in the drive details checks each one:
+
+| Part | What it checks |
+| --- | --- |
+| **Drive** | Whether the drive itself supports TRIM, read straight from the drive. Almost every SSD made after 2010 does. *Hidden by adapter* means the USB adapter doesn't pass the drive's own information through, so DriveScope can't ask. |
+| **Connection / USB adapter** | Windows' own answer to “will TRIM reach this drive?” (the same check “Optimize Drives” uses). Inside the PC it's normally yes. Through USB it depends on the adapter. It needs **UAS mode** (shown next to it) and a chip that passes TRIM on: ASMedia ASM1153E/ASM235CM and JMicron JMS578/JMS580 usually do. **BOT-mode** adapters never pass TRIM, and many no-name adapters don't either. |
+| **Windows** | Whether TRIM is switched on for the whole PC. If it's off, click the TRIM chip at the top of the page. |
+
+The verdict is **✔ TRIM works**, **✖ No TRIM** (with the reason and what to do), **⚠ Partly** (for example, the adapter passes TRIM but hides whether the drive supports it), or **– Not needed** (hard drives, USB sticks and memory cards). The Connection panel shows the same result as *TRIM reaches the drive*, and it's on the test report. Without TRIM, an SSD still works and still erases completely with *Overwrite + verify*. It just stays “full” as far as the drive knows until the next owner's Windows trims it.
+
 ## 10. Several drives at once
 
 Every drive can run its own test, benchmark, burn-in, erase or partition change at the same time as the others. Each has its own progress, Cancel button and hang detection. Busy drives show their task in the drive list; the floating badge lists every running job (click one to jump to it), and Windows notifies you as each finishes. A second job on the same drive is refused.
