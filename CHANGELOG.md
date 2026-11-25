@@ -3,6 +3,20 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.5 — 2026-11-25
+- **Tests no longer run on top of the drive's own self-test.** An extended self-test makes the drive read its
+  whole surface by itself; a Quick test, scan, benchmark or erase at the same time competes with it, reads get very
+  slow and (especially through USB adapters) fail – so the drive looked far worse than it is. Before any test
+  starts, DriveScope now asks the drive whether a self-test is still running inside it. If so, it explains and
+  offers to **wait** (recommended) or to **stop the self-test first**.
+- Self-tests are watched more carefully: one "not running" answer from a USB adapter is no longer taken as "done",
+  and an extended self-test reported finished far sooner than the drive's own estimate is marked **UNCERTAIN** –
+  DriveScope keeps other tests off the drive until the expected end.
+- A Quick test or Full scan that still ran during a self-test is marked **INCOMPLETE – not reliable** (instead of
+  FAIL) with the reason, so it can't put a false FAIL on the label.
+- New: **Tests on this drive, in the order they ran** (Test panel and report), with ⚠ on any test that overlapped
+  another, and a **Recommended order of tests** guide.
+
 ## 1.20.4 — 2026-11-25
 - **New: "Does TRIM work on this drive?"** The TRIM line in the drive details now checks all three links:
   the **drive** supports TRIM (or the adapter hides it), the **connection / USB adapter** passes it on (Windows'

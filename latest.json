@@ -1,13 +1,13 @@
 {
-  "version": "1.20.4",
+  "version": "1.20.5",
   "published": "2026-11-25",
-  "notes": "New three-part TRIM check: does the drive support it, does the connection/USB adapter pass it on, is it on in Windows.",
+  "notes": "Tests no longer run on top of the drive's own self-test (wait or stop it first); self-test end checked more carefully; overlapping tests marked not reliable; test order list and recommended order.",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "e738a19896e5d54ad09f2b126b93fe3bc502c3366d25c5e09f02103290e005d0",
-  "size": 8843264,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.4",
-  "setup_sha256": "7c92a69b4875b094ccb46107b91ea3c84b33aaee5b4f884b3dcdfd7d6360d3d3",
-  "setup_size": 3025404,
+  "sha256": "caf7e3a5fd58aee17b2b192dc06d39c90a4fbf14cbc6bf84aa283e84c0be781f",
+  "size": 8878592,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.5",
+  "setup_sha256": "b6509053abce9de7cb9e9dc5820dc764aa1482ba315ed563f20ac484f6f87cbd",
+  "setup_size": 3035311,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }
