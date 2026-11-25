@@ -148,6 +148,17 @@ A Full surface scan in progress: the surface map fills in as the drive is read.
 
 **Surface map:** while the Quick test or Full surface scan reads the drive, the drive is drawn as 200 squares (each 0.5 % of the drive, from its start at the top left to its end at the bottom right). Each square turns **green** when it reads fine, **amber** when it is much slower than the rest of the drive, or **red** when it has unreadable data; the area being read now has a pulsing blue outline. The blue graph above shows the read speed across the drive. Point at any square for its exact position and speed. The finished map stays with the result.
 
+### Order of tests, and why they shouldn't overlap
+
+Some tests get in each other's way, and the worst pair is a self-test and anything else. An **extended self-test** makes the drive read its whole surface by itself, for minutes to hours. A Quick test, scan, benchmark or erase at the same time competes with it: reads get very slow, and through USB adapters many of them fail. The drive then looks far worse than it really is, and many drives also abort their self-test.
+
+- **DriveScope checks before every test.** If the drive says a self-test is still running inside it, the test doesn't start. DriveScope explains why and lets you **wait** (recommended) or **stop the self-test first**.
+- Some USB adapters report a self-test as “done” too early. An extended self-test that finishes much sooner than the drive's own estimate is marked **UNCERTAIN**, and DriveScope keeps other tests off the drive until the expected end.
+- A Quick test or Full scan that still ran during a self-test is marked **INCOMPLETE – not reliable** instead of FAIL, so a false FAIL can't end up on the label. Run it again on its own.
+- The Test panel and the report list **the tests on this drive, in the order they ran** (the latest of each kind), with ⚠ on any that overlapped another.
+
+**Recommended order:** 1. Quick test → 2. Extended self-test (leave the drive alone) → 3. Full surface scan and benchmark, one at a time → 4. Erase or Prepare for sale → 5. Print the label last.
+
 ### Full surface scan options: passes, range, resume
 
 ![Full surface scan options](https://dialsoft.com/drivescope/img/scanopts.jpg)
@@ -356,6 +367,7 @@ Uninstalling never deletes test reports, and asks before removing settings and h
 | “Invalid Parameter” during the format | DriveScope retries and falls back to Windows' FORMAT command by itself. If it still fails: unplug and reconnect the drive, press Refresh and try again, or try NTFS or another dock. |
 | No S.M.A.R.T. data (“SMART ✖”) | The USB dock doesn't pass health data through. Use another dock (Realtek RTL9210, JMicron, ASMedia ASM2362/ASM1153 usually work) or a motherboard slot. |
 | Running slower than it should | Check the **Connected via** line and the USB card: USB 2 speed, a hub, or a dock limits the speed. |
+| Quick test shows many read errors right after a self-test | The drive was probably still busy with its self-test (see [Order of tests](#order)). Wait for it to finish, or stop it, then run the Quick test again on its own. Newer DriveScope versions check for this automatically. |
 | NVMe self-test says “Waiting for Windows” | Normal. Since Windows 10 version 2004 (Windows 11 too), Windows' own NVMe driver allows only one self-test about every 10 minutes. It refuses another one sooner with “status 8”. DriveScope waits, shows when the test will start and starts it by itself; leave it running or press Cancel. |
 | SATA Secure Erase says “frozen” | The PC's firmware froze the drive at startup. Connect it after Windows has started (dock or hot-swap bay), or briefly put the PC to sleep and wake it. |
 | The confirmation code won't match | Type only the last 4 letters/digits of the serial number shown in the dialog. Make sure you're on the newest version (an old copy may still be running in the tray: right-click its icon → Quit). |
