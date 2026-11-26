@@ -101,6 +101,21 @@ The **Drive details** panel lists everything DriveScope knows. Point at any line
 - **Seagate FARM log** (Seagate hard drives) – see below.
 - **Temperature & health history** – graphs of the drive's temperature and failure counters over time – see below.
 
+### Is the “life remaining” right?
+
+An SSD's life remaining comes from the drive itself, and some drives get it wrong. Many generic and OEM SSDs (Dogfish, KingSpec, Intenso, BIWIN and other drives with a Silicon Motion controller, which are very common in mSATA) leave the standard life value at 100% however worn they are. On those drives DriveScope reads the real value where they actually keep it.
+
+It also double-checks every SATA SSD with counters the drive keeps anyway:
+
+- **Erase count:** every flash block survives a rated number of erase cycles (about 3,000 for MLC flash, 1,000 for TLC, 600 for QLC). Silicon Motion drives even report their own rating. The average erase count compared with that rating gives the share of life used.
+- **Data written:** a drive that says 100% but has been written full more than 150 times over can't be right.
+
+The result shows under **Life remaining**:
+
+- **✔ Life value confirmed:** the estimate agrees.
+- **⚠ Life value doubtful:** the drive's own value can't be right. DriveScope shows its estimate instead, on the screen, label and report (marked “est.”), with the drive's claim next to it. If there's no erase count to estimate from, it shows “?% (counter stuck)” instead of a misleading 100%.
+- **≈ Life estimated:** the drive doesn't report life at all, so this is the estimate.
+
 ### Seagate FARM check: used drives sold as new
 
 ![Seagate FARM log showing History altered](https://dialsoft.com/drivescope/img/farm.jpg)
@@ -391,6 +406,7 @@ Uninstalling never deletes test reports, and asks before removing settings and h
 | DRAM-less / HMB | Budget SSDs without their own memory cache; they're slower under heavy use, especially in USB enclosures. |
 | NIST Clear / Purge | Erase levels from the US standard NIST SP 800-88: Clear protects against normal recovery tools; Purge also against lab recovery. |
 | HPA | Host Protected Area: capacity hidden from the computer, sometimes used by laptop makers for recovery tools. |
+| Erase count / P/E cycles | How many times the flash blocks have been erased and rewritten. Flash wears out after a rated number of these cycles, so this is the most direct measure of an SSD's wear. |
 | FARM | Field Access Reliability Metrics: a second set of lifetime counters inside Seagate hard drives that S.M.A.R.T. reset tools don't touch. |
 | Response time, P95 / P99 | How long a single read takes. “95 % within 3.4 ms” (P95) means 95 out of every 100 reads were at least that fast. The slowest 1 % shows weak spots that averages hide. |
 | Q8T1, Q32T16… | Benchmark load: Q = requests waiting in the queue, T = threads. Q1T1 is one request at a time (everyday use); high Q×T is the heavy load that rated speeds are measured with. |
