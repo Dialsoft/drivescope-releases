@@ -1,13 +1,13 @@
 {
-  "version": "1.20.6",
+  "version": "1.20.7",
   "published": "2026-11-25",
-  "notes": "Silicon Motion SSDs (Dogfish, KingSpec, Intenso, many mSATA) now show their real life instead of a stuck 100%; new life value double-check from erase count and data written.",
+  "notes": "Fixed stale drive details and test results after swapping drives (Windows storage cache refresh, results forgotten when a different drive takes the same number, Windows plug/unplug notifications).",
   "exe": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope.exe",
-  "sha256": "1ed1708a99dd3dc70fae1940e54946893a1789c4c2569210416c5cd3c70c9f93",
-  "size": 8893440,
-  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.6",
-  "setup_sha256": "0fa3b719ba6afe93e323576181d28e407d4a2aef7a79d7729aecf52c5aa4837c",
-  "setup_size": 3039740,
+  "sha256": "3d57880e99392957051635a77eb292f56beb560780f1e66a9683fad82bcd18f5",
+  "size": 8900608,
+  "setup_url": "https://raw.githubusercontent.com/Dialsoft/drivescope-releases/main/DriveScope-Setup.exe?v=1.20.7",
+  "setup_sha256": "a6247e731d4081f448696fab8f9733e1353942a6579b9d51b23bc6afb2ac5edc",
+  "setup_size": 3043710,
   "page": "https://github.com/Dialsoft/drivescope-releases#readme",
   "manual": "https://dialsoft.com/drivescope/manual/"
 }

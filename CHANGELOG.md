@@ -3,6 +3,18 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.7 — 2026-11-25
+- **Fixed: after swapping drives, DriveScope could show the previous drive's details or test results** until it
+  was restarted. Three causes, all fixed:
+  - Windows' storage service keeps its own copy of the drive list and could still report the old drive's model,
+    serial or size. DriveScope now has Windows re-read every drive at each scan.
+  - Windows reuses drive numbers, and a cheap USB adapter that hides the drive reports its own serial number
+    (often all zeros), so two drives of the same size looked like one. DriveScope now forgets a number's results
+    when a different drive appears there, or – behind such an adapter – when the drive was unplugged in between.
+    A drive with its own serial that drops off for a moment (a dock resetting during an erase) keeps its results.
+  - The drive watcher checked every 2 seconds and could miss a very quick swap. It now also listens to Windows'
+    own "disk plugged in / removed" messages, so every swap triggers a fresh scan.
+
 ## 1.20.6 — 2026-11-25
 - **Fixed: Silicon Motion based SSDs (Dogfish, KingSpec, Intenso, BIWIN, Transcend and many other generic and OEM
   drives, very common in mSATA) showed 100% life however worn they were.** Their real life value is kept in the
