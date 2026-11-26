@@ -3,6 +3,17 @@
 Versions follow MAJOR.MINOR.PATCH. The version lives in the `VERSION` file; `build.sh` writes it into the
 exe (Properties › Details), the manifest and the app footer, together with a build date/time stamp.
 
+## 1.20.6 — 2026-11-25
+- **Fixed: Silicon Motion based SSDs (Dogfish, KingSpec, Intenso, BIWIN, Transcend and many other generic and OEM
+  drives, very common in mSATA) showed 100% life however worn they were.** Their real life value is kept in the
+  raw part of attribute #169; DriveScope now reads it there. Their data-written counter is also read in the
+  right units (32 MiB) now.
+- **New: life value double-check.** DriveScope estimates wear independently from the drive's average erase count
+  (against the drive's own rated cycles, or the flash type's typical rating) and from the data written. If the
+  drive's own value can't be right, it says **⚠ Life value doubtful** and uses its estimate on the screen, label
+  and report (marked "est."); a stuck counter with no erase count shows "?% (counter stuck)" instead of 100%.
+  When the two agree it says **✔ Life value confirmed**.
+
 ## 1.20.5 — 2026-11-25
 - **Tests no longer run on top of the drive's own self-test.** An extended self-test makes the drive read its
   whole surface by itself; a Quick test, scan, benchmark or erase at the same time competes with it, reads get very
