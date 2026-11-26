@@ -4,7 +4,7 @@ Drive tester for Windows by Dialsoft LLC (theITguy.com). Tests SSDs, hard drives
 
 ## Download
 
-Current version: **1.20.6** · Windows 10 or 11, 64-bit. Both downloads are the same program; pick one:
+Current version: **1.20.7** · Windows 10 or 11, 64-bit. Both downloads are the same program; pick one:
 
 | | |
 |---|---|
